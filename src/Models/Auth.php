@@ -37,7 +37,7 @@ class Auth{
 
     public function isProtectedPage($status){
         if($status){
-            Redirect::local($this->base, "login.php");
+            Redirect::local("login.php");
         }else{
             return false;
         }
@@ -49,5 +49,32 @@ class Auth{
 
     public function buildToken(){
         return md5(time().rand(0,999));
+    }
+
+    public function checkLogin($email, $password){
+        $emailUser = $this->userDao->findByEmail($email);
+
+        if($emailUser){
+            if(password_verify($password, $emailUser->password)){  
+
+                $newToken = $this->buildToken();
+                $emailUser->token = $newToken;
+                $this->userDao->update($emailUser);
+                $this->authenticateUser($newToken);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function authenticateUser($token){
+        $_SESSION['token'] = $token;
+    }
+
+    public static function logout(){
+        unset($_SESSION['token']);
+        session_unset();
+        session_destroy();
+        Redirect::local("login.php");
     }
 }

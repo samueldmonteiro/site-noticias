@@ -26,7 +26,7 @@ class UserDaoMysql{
         return $user;
     }
 
-    public function insert(User $user, $authenticate=false){
+    public function insert(User $user){
 
         $stmt = $this->pdo->prepare("INSERT INTO users 
         (name, email, password, token, level) VALUES 
@@ -38,17 +38,24 @@ class UserDaoMysql{
         $stmt->bindValue(":token", $user->token);
         $stmt->bindValue(":level", $user->level);
         $stmt->execute();
-
-        if($authenticate){
-            $this->authenticateUser($user->token);
-        }
     }
 
-    public function authenticateUser($token){
-        $_SESSION['token'] = $token;
+    public function update(User $user){
+
+        $stmt = $this->pdo->prepare("UPDATE users SET 
+        name=:name, email=:email, password=:password, 
+        image=:image, level=:level, token=:token WHERE id=:id");
+
+        $stmt->bindValue(":name",$user->name);
+        $stmt->bindValue(":email",$user->email);
+        $stmt->bindValue(":password",$user->password);
+        $stmt->bindValue(":image",$user->image);
+        $stmt->bindValue(":level",$user->level);
+        $stmt->bindValue(":token",$user->token);
+        $stmt->bindValue(":id",$user->id);
+        $stmt->execute();
     }
 
-    public function update(User $user){}
     public function findById($id){}
 
     public function findByToken($token){

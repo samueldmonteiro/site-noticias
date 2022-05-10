@@ -11,7 +11,7 @@ $auth = new Auth($pdo, $base);
 $userInfo = $auth->checkAuthentication(false);
 
 if($userInfo){
-    Redirect::local($base, "index.php");
+    Redirect::local("index.php");
 }
 
 require_once("partials/header.php");

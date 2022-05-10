@@ -21,23 +21,23 @@ $confirmPassword = Filter::input($_POST['confirm_password']);
 if($name && $email && $password && $confirmPassword){
 
     if(!$validate->dataSizeLimit([$name, $email, $password, $confirmPassword], 30)){
-        Message::return("error", "Preencha os Dados Corretamente!");
+        Message::returnByAjax("error", "Preencha os Dados Corretamente!");
     }
 
     if($validate->nameExists($name)){
-        Message::return("error", "Este Nome de Usuário já está Cadastrado!");
+        Message::returnByAjax("error", "Este Nome de Usuário já está Cadastrado!");
     }
 
     if($validate->emailExists($email)){
-        Message::return("error", "Este Email já está Cadastrado!");
+        Message::returnByAjax("error", "Este Email já está Cadastrado!");
     }
 
     if(!$validate->isValidEmail($email)){
-        Message::return("error", "Este Email não é Válido!");
+        Message::returnByAjax("error", "Este Email não é Válido!");
     }
 
     if($password != $confirmPassword){
-        Message::return("error", "As Senhas Prescisam ser Iguais!");
+        Message::returnByAjax("error", "As Senhas Prescisam ser Iguais!");
     }
 
     $passwordHash = $auth->buildPasswordHash($password);
@@ -51,10 +51,12 @@ if($name && $email && $password && $confirmPassword){
     $newUser->level = "normal";
 
     $userDao = new UserDaoMysql($pdo);
-    $userDao->insert($newUser, true);
-    Message::return("success", "Conta Registrada com Sucesso!");
+    
+    $userDao->insert($newUser);
+    $auth->authenticateUser($token);
+    Message::returnByAjax("success", "Conta Registrada com Sucesso!");
 
 }else{
-    Message::return("error", "Preencha Todos os Campos!");
+    Message::returnByAjax("error", "Preencha Todos os Campos!");
 
 }

@@ -5,10 +5,14 @@ html{
     position: relative;
     min-height: 100vh;
 }
+
 .container{
     padding: 15px;
 }
 
+.home, .news, .container.about, .container.login, .container.register{
+    margin-bottom: 100px !important;
+}
 .header-top{
     background-color: #011836;
     padding-top: 50px;
@@ -43,16 +47,26 @@ html{
     background-color:#00E1E5;
 }
 
-
-.header-bottom ul.container{
-    padding: 10px 15px;
-    position: relative;
-    left: -10px;
+.header-bottom .navbar{
+    padding: 10px 0px !important;
+}
+.header-bottom .container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    align-items: center !important;
 }
 
+.header-bottom ul.container{
+    padding: 15px 15px;
+    position: relative;
+    left: -10px;
+    padding-bottom: 0px;
+}
+
+
 #link-login{
-    position: absolute;
-    right: 0;
+ 
 }
 
 .header-bottom nav ul.container li{
@@ -73,6 +87,34 @@ html{
 }
 .header-bottom ul.dropdown-menu a{
     color: var(--color-1);
+}
+
+.header-user-menu{
+    padding: 10px 15px;
+}
+
+.header-user-menu a{
+    color: white;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.header-bottom .navbar-nav{
+    padding: 0 30px !important;
+}
+.header-user-menu .user{
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+}
+#logout{
+    font-size: 22px;
+    margin-left: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
 }
 
 .home-top{
@@ -128,8 +170,9 @@ html{
     justify-content: space-between;
 }
 
-.news-preview-home-head .image-user, .news-item-head .image-user{
+.news-preview-home-head .image-user, .news-item-head .image-user, header .image-user{
     width: 40px;
+    border-radius: 50%;
 }
 
 .info-from-news{
@@ -314,6 +357,7 @@ html{
 .login, .register{
     max-width: 550px;
     margin: 30px auto;
+    margin-bottom: 100px;
     display: flex;
     justify-content: center;
     height: max-content;
@@ -387,4 +431,39 @@ html{
     color: var(--color-1);
 }
 
+footer{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--color-1);
+    color: white;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
 
+}
+
+footer p{
+    margin: 0;
+}
+
+footer a{
+    color: white;
+    padding: 10px;
+    position: relative;
+    font-size: 14px;
+}
+
+
+.hide-message{
+    padding: 0;
+    margin: 0 !important;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.show-message{
+    padding: 8px;
+    margin-bottom: 18px;
+    opacity: 1;
+    transition: 0.2s;
+}

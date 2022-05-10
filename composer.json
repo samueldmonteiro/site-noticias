@@ -1,0 +1,18 @@
+{
+    "name": "samueldavimt/site-noticias",
+    "description": "Site de Notícias em PHP",
+    "authors": [
+        {
+            "name": "Samuel Davi",
+            "email": "samuel.davimt@gmail.com"
+        }
+    ],
+
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    }
+}

@@ -28,7 +28,7 @@ require_once("partials/header.php");
     <div class="container-news-home">
         <div class="news-preview-home">
             <div class="news-preview-home-image">
-                <img src="assets/images/42a76e155ac242cf93979ad39e5db58e.webp" alt="">
+                <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
             </div>
             <div class="news-preview-home-content">
                 <div class="news-preview-home-head">

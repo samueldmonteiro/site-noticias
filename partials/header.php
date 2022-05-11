@@ -53,7 +53,7 @@
                 <?php if($userInfo):?>
                     <div class="header-user-menu">
                         <div class="user">
-                            <img src="<?=$base?>media/users/user.jpeg" alt="" class="image-user">
+                            <img src="<?=$base?>media/users/<?=$userInfo->getImage()?>" alt="" class="image-user">
                             <a href="<?=$base?>profile.php"><?=$userInfo->name?></a>
                         </div>
                     </div>

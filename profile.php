@@ -27,29 +27,34 @@ require_once("partials/header.php");
     <section style="background-color: #eee;">
         <div class="container py-5">
             <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="<?=$base?>">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?=$userInfo->name?></li>
-                </ol>
-                </nav>
-            </div>
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="<?=$base?>">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?=$userInfo->name?></li>
+                    </ol>
+                    </nav>
+                </div>
             </div>
 
             <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                <div class="card-body text-center">
-                    <img id="image-user" src="<?=$base?>media/users/<?=$userInfo->getImage()?>" alt="avatar"
-                    class="rounded-circle img-fluid" style="width: 150px;">
-                    <h5 class="my-3"><?=$userInfo->name?></h5>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img id="image-user" src="<?=$base?>media/users/<?=$userInfo->getImage()?>" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3"><?=$userInfo->name?></h5>
+                        <div class="row">
+                        
+                        <?php if($auth->isAdmin($userInfo)):?>
+                            <a href="<?=$base?>create_news.php" class="btn btn-primary new-news">Publicar Notícia</a>
+                        <?php endif?>
+                    </div>
+                    </div>
+                    </div>
                     
                 </div>
-                </div>
-                
-            </div>
-            <form  method="POST" action="<?=$base?>profile_edit_action.php" class="col-lg-8" enctype="multipart/form-data">
+                <form  method="POST" action="<?=$base?>profile_edit_action.php" class="col-lg-8" enctype="multipart/form-data">
                 <div class="card mb-4">
                 <div class="card-body">
 

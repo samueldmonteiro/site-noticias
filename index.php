@@ -3,13 +3,20 @@
 require_once("vendor/autoload.php");
 require_once("config/globals.php");
 
+use Src\Dao\NewsDaoMysql;
 use Src\Models\Auth;
 use Src\Utils\Redirect;
 
 $auth = new Auth($pdo, $base);
+$newsDao = new NewsDaoMysql($pdo);
 
 $userInfo = $auth->checkAuthentication(false);
 
+$newsList = $newsDao->getAllNews();
+
+// echo "<pre>";
+// print_r($newsList);
+// echo "</pre>";
 
 require_once("partials/header.php");
 ?>
@@ -26,7 +33,8 @@ require_once("partials/header.php");
     </div>
 
     <div class="container-news-home">
-        <div class="news-preview-home">
+
+        <!-- <div class="news-preview-home">
             <div class="news-preview-home-image">
                 <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
             </div>
@@ -69,7 +77,11 @@ require_once("partials/header.php");
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <?php foreach($newsList as $newsItemPreviewHome):?>
+            <?php require("partials/news_preview_home.php")?>
+        <?php endforeach?>
 
     </div>
 </div>

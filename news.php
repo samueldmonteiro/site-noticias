@@ -1,7 +1,45 @@
-<?php 
+<?php
+
+require_once("vendor/autoload.php");
+require_once("config/globals.php");
+
+use Src\Dao\NewsDaoMysql;
+use Src\Models\Auth;
+use Src\Utils\Filter;
+use Src\Utils\Redirect;
+
+$auth = new Auth($pdo, $base);
+$newsDao = new NewsDaoMysql($pdo);
+
+
+$userInfo = $auth->checkAuthentication(false);
+
+if(!isset($_GET['news_id'])){
+    Redirect::local("index.php");
+}
+
+$newsId = Filter::id($_GET['news_id']);
+$newsItem = $newsDao->findById($newsId);
+
+
+
+if(!$newsItem){
+    die("<h3>Notícia não Encontrada...</h3>"); 
+}
 
 require_once("partials/header.php");
 ?>
+
+<!-- <p id="content" style="display:none; !important"><?=$newsItem->getBody()?></p>
+
+<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+
+<textarea name="editor1"></textarea>
+<script>
+        CKEDITOR.replace( 'editor1' );
+        CKEDITOR.instances.editor1.setData(document.querySelector("#content").innerHTML);
+
+</script> -->
 
 <div class="container news">
     <div class="home-top">
@@ -14,53 +52,7 @@ require_once("partials/header.php");
         </div>
     </div>
 
-
-    <div class="news-item">
-        <div class="news-item-head">
-            <div class="info-from-news">
-                <img src="assets/images/user.jpeg" alt="" class="image-user">
-                <div>
-                    <div class="username">Administrador</div>
-                    <div class="info-datetime">13 de Abril de 2022 <span class="info-time">  - 1 min</span></div>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <p type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical"></i>
-                </p>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-send"></i> Compartilhar</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-pen"></i> Editar</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash3"></i> Deletar</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="news-item-body">
-            <p class="news-item-title">A influência da estratégia humana nos negócios</p>
-            <p class="news-item-subject">Crie um subtítulo para o post no blog que resume numa frase curta e atraente o seu post. Assim seus leitores vão querer continuar a ler.</p>
-
-            <div class="news-item-image">
-                <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
-            </div>
-
-            <div class="news-item-content">
-
-            </div>
-
-            <div class="news-item-footer">
-                <div>
-                    <span class="views-info">300 visualizações</span>
-                    <span class="comments-info">3 comentários</span>
-                </div>
-                <div class="likes-info">
-                    <span id="num-likes">10</span>
-                    <i class="bi bi-heart"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php require("partials/news_item.php");?>
 
     <div class="container-news-mini-preview">
         <div class="mini-preview-top">
@@ -162,6 +154,9 @@ require_once("partials/header.php");
             </div>
         </div>
     </div>
-        
 </div>
-<?php require_once("partials/footer.php");?>
+
+<script src="<?=$base?>assets/js/newsBody.js"></script>
+
+
+<?php require_once("partials/footer.php")?>

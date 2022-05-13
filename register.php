@@ -24,7 +24,7 @@ require_once("partials/header.php");
         </div>
 
         <div class="form-register-body">
-            <div class="alert alert-danger message hide-message" role="alert">
+            <div class="alert alert-danger text-center message hide-message" role="alert">
               teste
             </div>
             <label>

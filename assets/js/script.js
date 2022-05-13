@@ -18,7 +18,8 @@ function displayMessage(type, msg, displayTime=false){
     if(displayTime){
         setTimeout(()=>{
             message.classList.remove("show-message");
-            message.classList.add("show-hide");
+            message.classList.add("hide-message");
         }, displayTime)
     }
 }
+

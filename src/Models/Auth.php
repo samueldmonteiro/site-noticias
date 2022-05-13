@@ -77,4 +77,12 @@ class Auth{
         session_destroy();
         Redirect::local("login.php");
     }
-}
+
+    public function isAdmin($userInfo){
+        if($userInfo->level == "adm"){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}   

@@ -3,6 +3,7 @@
 namespace Src\Utils;
 
 use Src\Dao\UserDaoMysql;
+use Src\Dao\NewsCategoryDaoMysql;
 
 class Validate{
 
@@ -34,5 +35,10 @@ class Validate{
     public function emailExists($email){
         $userDao = new UserDaoMysql($this->pdo);
         return $userDao->findByEmail($email);
+    }
+
+    public function newsCategoryExists($newsCategory){
+        $newsCategoryDao = new NewsCategoryDaoMysql($this->pdo);
+        return $newsCategoryDao->findByName($newsCategory);
     }
 }

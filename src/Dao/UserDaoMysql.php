@@ -56,7 +56,20 @@ class UserDaoMysql{
         $stmt->execute();
     }
 
-    public function findById($id){}
+    public function findById($id){
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            $data = $stmt->fetch();
+            $user = $this->buildUser($data);
+            return $user;
+           
+        }else{
+            return false;
+        }
+    }
 
     public function findByToken($token){
 

@@ -21,25 +21,12 @@ if(!isset($_GET['news_id'])){
 $newsId = Filter::id($_GET['news_id']);
 $newsItem = $newsDao->findById($newsId);
 
-
-
 if(!$newsItem){
     die("<h3>Notícia não Encontrada...</h3>"); 
 }
 
 require_once("partials/header.php");
 ?>
-
-<!-- <p id="content" style="display:none; !important"><?=$newsItem->getBody()?></p>
-
-<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
-
-<textarea name="editor1"></textarea>
-<script>
-        CKEDITOR.replace( 'editor1' );
-        CKEDITOR.instances.editor1.setData(document.querySelector("#content").innerHTML);
-
-</script> -->
 
 <div class="container news">
     <div class="home-top">
@@ -57,7 +44,7 @@ require_once("partials/header.php");
     <div class="container-news-mini-preview">
         <div class="mini-preview-top">
             <span>Posts Recentes</span>
-            <a href="index.html">Ver todos</a>
+            <a href="<?=$base?>">Ver todos</a>
         </div>
 
         <div class="items">
@@ -155,8 +142,6 @@ require_once("partials/header.php");
         </div>
     </div>
 </div>
-
-<script src="<?=$base?>assets/js/newsBody.js"></script>
 
 
 <?php require_once("partials/footer.php")?>

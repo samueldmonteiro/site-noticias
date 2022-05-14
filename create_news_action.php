@@ -27,10 +27,6 @@ $newsSubject = Filter::input($_POST['news-subject']);
 $newsCategory = Filter::input($_POST['news-category']);
 $newsBody = Filter::newsBody($_POST['news-body']);
 
-
-die(json_encode($_POST['news-body']));
-//die(json_encode($newsBody));
-
 if(isset($_FILES['news-cover'])){
     $newsCover = $_FILES['news-cover'];
 }
@@ -68,5 +64,3 @@ if($newsTitle && $newsSubject && $newsBody && !empty($newsCover['name'])){
 }else{
     Message::returnByAjax("error", "Preencha Todos os Campos!");
 }
-
-?>

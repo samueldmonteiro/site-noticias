@@ -15,9 +15,6 @@
     --color-2: #00E1E5;
 }
 
-li{
-    list-style: none;
-}
 
 a{
     text-decoration: none;
@@ -27,3 +24,7 @@ input{
     outline: none;
 }
 
+
+#cke_editor1{
+    display: none;
+}

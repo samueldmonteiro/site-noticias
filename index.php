@@ -83,6 +83,10 @@ require_once("partials/header.php");
             <?php require("partials/news_preview_home.php")?>
         <?php endforeach?>
 
+        <?php if(!$newsList):?>
+            <h3 class="text-center mt-4">Nenhuma Notícia Publicada</h3>
+        <?php endif?>
+
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 function displayMessage(type, msg, displayTime=false){
     
-    message = document.querySelector(".message");
+    let message = document.querySelector(".message");
     message.classList.remove("hide-message");
     message.classList.add("show-message");
 

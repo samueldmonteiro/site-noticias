@@ -1,4 +1,11 @@
-<div class="news-item">
+<script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+
+<textarea name="editor1"></textarea>
+<script>
+        CKEDITOR.replace( 'editor1' );
+</script>
+
+<div class="news-item" data-id="<?=$newsItem->id?>">
     <div class="news-item-head">
         <div class="info-from-news">
             <img src="<?=$base?>media/users/<?=$newsItem->user->image?>" alt="" class="image-user">
@@ -29,7 +36,7 @@
         </div>
 
         <div class="news-item-content mt-4 mb-4">
-            <?=$newsItem->getBody()?>
+            
         </div>
 
         <div class="news-item-footer">
@@ -44,3 +51,5 @@
         </div>
     </div>
 </div>
+
+<script src="<?=$base?>assets/js/newsBody.js"></script>

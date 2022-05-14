@@ -4,8 +4,8 @@ if(document.querySelector(".form-register")){
 
 function buildRegisterForm(e){    
     e.preventDefault();
-    form = e.currentTarget;
-    formData = new FormData(form);
+    let form = e.currentTarget;
+    let formData = new FormData(form);
     sendRegisterForm(formData);
 }
 

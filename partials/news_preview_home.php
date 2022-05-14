@@ -1,4 +1,4 @@
-<div class="news-preview-home">
+<div class="news-item-action news-preview-home" data-id="<?=$newsItemPreviewHome->id?>">
     <div class="news-preview-home-image">
         <img src="<?=$base?>media/news/<?=$newsItemPreviewHome->cover?>" alt="">
     </div>
@@ -35,9 +35,14 @@
                 <span class="views-info">300 visualizações</span>
                 <span class="comments-info">3 comentários</span>
             </div>
-            <div class="likes-info">
-                <span id="num-likes">10</span>
-                <i class="bi bi-heart"></i>
+            <div class="likes-info" id="news-like">
+                <span id="num-likes"><?=$newsItemPreviewHome->countLikes?></span>
+               
+                <?php if($newsItemPreviewHome->isLiked):?>
+                    <i class="bi bi-heart-fill"></i>
+                <?php else:?>
+                    <i class="bi bi-heart"></i>
+                <?php endif?>
             </div>
         </div>
     </div>

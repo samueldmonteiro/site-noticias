@@ -4,6 +4,8 @@ namespace Src\Dao;
 
 use Src\Models\News;
 use Src\Dao\UserDaoMysql;
+use Src\Dao\NewsLikeDaoMysql;
+use Src\Models\Auth;
 
 class NewsDaoMysql{
 
@@ -27,7 +29,20 @@ class NewsDaoMysql{
         if($allInfomations){
 
             $userDao = new UserDaoMysql($this->pdo);
+            $newsLikeDao = new NewsLikeDaoMysql($this->pdo);
+            $auth = new Auth($this->pdo, false);
+
+            $currentUserInfo = $auth->checkAuthentication(false);
+
             $news->user = $userDao->findById($news->id_user);
+
+            $news->countLikes = $newsLikeDao->getLikesFromNews($news->id);
+            
+            if($currentUserInfo){
+                $news->isLiked = $newsLikeDao->likeExists($currentUserInfo->id, $news->id);
+            }else{
+                $news->isLiked = false;
+            }
         }
 
         return $news;

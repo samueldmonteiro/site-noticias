@@ -9,5 +9,6 @@
     <script src="<?=$base?>assets/js/script.js"></script>
     <script src="<?=$base?>assets/js/register.js"></script>
     <script src="<?=$base?>assets/js/create_news.js"></script>
+    <script src="<?=$base?>assets/js/newsLike.js"></script>
 </body>
 </html>

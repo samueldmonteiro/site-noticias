@@ -3,6 +3,10 @@
         min-width: 100% !important;
         padding: 20px 30px;
     }
+
+    .news-item-image{
+        height: auto;
+    }
 }
 
 @media (min-width:800px){

@@ -21,6 +21,8 @@ if(!isset($_GET['news_id'])){
 $newsId = Filter::id($_GET['news_id']);
 $newsItem = $newsDao->findById($newsId);
 
+$newsList = $newsDao->getAllNews();
+
 if(!$newsItem){
     die("<h3>Notícia não Encontrada...</h3>"); 
 }
@@ -48,97 +50,12 @@ require_once("partials/header.php");
         </div>
 
         <div class="items">
-            <div class="news-mini-preview">
-                <a href="index.html">
-                    <div class="news-mini-preview-image">
-                        <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
-                    </div>
-
-                    <div class="news-mini-preview-title">
-                        10 regras de ouro para o planejamento estratégico
-                    </div>
-                    <div class="news-mini-preview-footer">
-                        <div>
-                            <span class="views-info"><i class="bi bi-eye"></i> 300</span>
-                            <span class="comments-info"><i class="bi bi-chat-left-dots"></i> 5</span>
-                        </div>
-                        <div class="likes-info">
-                            <span id="num-likes">10</span>
-                            <i class="bi bi-heart"></i>
-                        </div>
-                    </div>
-                    
-                </a>
-            </div>
-
-            <div class="news-mini-preview">
-                <a href="index.html">
-                    <div class="news-mini-preview-image">
-                        <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
-                    </div>
-
-                    <div class="news-mini-preview-title">
-                        10 regras de ouro para o planejamento estratégico
-                    </div>
-                    <div class="news-mini-preview-footer">
-                        <div>
-                            <span class="views-info"><i class="bi bi-eye"></i> 300</span>
-                            <span class="comments-info"><i class="bi bi-chat-left-dots"></i> 5</span>
-                        </div>
-                        <div class="likes-info">
-                            <span id="num-likes">10</span>
-                            <i class="bi bi-heart"></i>
-                        </div>
-                    </div>
-                    
-                </a>
-            </div>
-
-            <div class="news-mini-preview">
-                <a href="index.html">
-                    <div class="news-mini-preview-image">
-                        <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
-                    </div>
-
-                    <div class="news-mini-preview-title">
-                        10 regras de ouro para o planejamento estratégico
-                    </div>
-                    <div class="news-mini-preview-footer">
-                        <div>
-                            <span class="views-info"><i class="bi bi-eye"></i> 300</span>
-                            <span class="comments-info"><i class="bi bi-chat-left-dots"></i> 5</span>
-                        </div>
-                        <div class="likes-info">
-                            <span id="num-likes">10</span>
-                            <i class="bi bi-heart"></i>
-                        </div>
-                    </div>
-                    
-                </a>
-            </div>
-
-            <div class="news-mini-preview">
-                <a href="index.html">
-                    <div class="news-mini-preview-image">
-                        <img src="assets/images/f69f0ddab5a5bff3e4d39520e1632772.webp" alt="">
-                    </div>
-
-                    <div class="news-mini-preview-title">
-                        10 regras de ouro para o planejamento estratégico
-                    </div>
-                    <div class="news-mini-preview-footer">
-                        <div>
-                            <span class="views-info"><i class="bi bi-eye"></i> 300</span>
-                            <span class="comments-info"><i class="bi bi-chat-left-dots"></i> 5</span>
-                        </div>
-                        <div class="likes-info">
-                            <span id="num-likes">10</span>
-                            <i class="bi bi-heart"></i>
-                        </div>
-                    </div>
-                    
-                </a>
-            </div>
+            
+            <?php foreach($newsList as $newsMiniPreview):?>
+                <?php if($newsItem->id != $newsMiniPreview->id):?>
+                    <?php require("partials/news_mini_preview.php")?>
+                <?php endif?>
+            <?php endforeach?>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@
 <div class="news-item" data-id="<?=$newsItem->id?>">
     <div class="news-item-head">
         <div class="info-from-news">
-            <img src="<?=$base?>media/users/<?=$newsItem->user->image?>" alt="" class="image-user">
+            <img src="<?=$base?>media/users/<?=$newsItem->user->image?>" alt="" class="image-user me-2">
             <div>
                 <div class="username"><?=$newsItem->user->name?></div>
                 <div class="info-datetime"><?=$newsItem->getFormattedDate()?><span class="info-time ms-2"><?=$newsItem->getTimeItWasCreated()?></span></div>
@@ -45,7 +45,7 @@
                 <span class="comments-info">3 comentários</span>
             </div>
             <div class="likes-info">
-                <span id="num-likes">10</span>
+                <span id="num-likes"><?=$newsItem->countLikes?></span>
                 <i class="bi bi-heart"></i>
             </div>
         </div>

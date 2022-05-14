@@ -33,6 +33,10 @@ if(isset($_FILES['news-cover'])){
 
 if($newsTitle && $newsSubject && $newsBody && !empty($newsCover['name'])){
 
+    if(!$validate->dataSizeLimit([$newsTitle, $newsSubject],100)){
+        Message::returnByAjax("error", "Título ou Assunto Prescisam ter Menos de 100 caracteres!");
+    }
+
     if(!$validate->newsCategoryExists($newsCategory)){
         Message::returnByAjax("error", "");
     }

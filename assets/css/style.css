@@ -309,7 +309,6 @@ html{
 .container-news-mini-preview .items{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 .mini-preview-top{
     display: flex;

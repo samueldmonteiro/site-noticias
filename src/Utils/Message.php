@@ -5,7 +5,7 @@ namespace Src\Utils;
 use Src\Utils\Redirect;
 class Message{
 
-    public static function returnByAjax($type, $msg, $data=false){
+    public static function returnByAjax($type, $msg=false, $data=false){
         $values = [
             "type" => $type,
             "msg"  => $msg,

@@ -11,7 +11,6 @@ use Src\Utils\Redirect;
 $auth = new Auth($pdo, $base);
 $newsDao = new NewsDaoMysql($pdo);
 
-
 $userInfo = $auth->checkAuthentication(false);
 
 if(!isset($_GET['news_id'])){
@@ -58,7 +57,45 @@ require_once("partials/header.php");
             <?php endforeach?>
         </div>
     </div>
+
+    <div class="news-comments">
+        <span class="title">Comentários</span>
+        <div class="news-comment-create">
+            <?php if($userInfo):?>
+                <img src="<?=$base?>media/users/<?=$userInfo->image?>" alt="" class="image-user">
+            <?php else:?>
+                <img src="<?=$base?>media/users/user.jpeg" alt="" class="image-user">
+            <?php endif?>
+
+            <div class="news-comment-create-content">
+                <textarea name="comment-body" id="" cols="30" rows="10" placeholder="Digite aqui..."></textarea>
+                <div class="news-comment-create-controls">
+                    <button class="btn btn-secondary" id="post-comment">Publicar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-news-comment-items">
+            
+        </div>
+
+        <p id="more-comments">Ver Mais</p>
+
+        <div class="news-comment-item" style="display: none;">
+                <img src="<?=$base?>media/users/user.jpeg" alt="" class="image-user">
+                <div class="news-comment-item-content">
+                    <div class="news-comment-item-info">
+                        <a href="" class="username">Teste Teste</a>
+                        <p class="post-date">1s</p>
+                    </div>
+                    <div class="news-comment-item-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, impedit. Non provident doloremque, perspiciatis a dolorum quasi culpa illo quod aliquam sunt error pariatur sequi in facilis officiis, quas ea!
+                    </div>
+                </div>
+            </div>
+    </div>
 </div>
+
 
 
 <?php require_once("partials/footer.php")?>

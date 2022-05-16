@@ -6,14 +6,14 @@ class Filter{
 
     public static function general($value){
         $value = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
-        return $value;
+        return trim($value);
     }
 
     public static function input($input){
         $input = strip_tags($input);
         $input = filter_var($input, FILTER_SANITIZE_SPECIAL_CHARS);
-        $input = addslashes($input);
-        return $input;
+        return trim($input);
+        
     }
 
     public static function newsBody($newsBody){
@@ -37,6 +37,6 @@ class Filter{
     public static function id($id){
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
         $id = addslashes($id);
-        return $id;
+        return trim($id);
     }
 }

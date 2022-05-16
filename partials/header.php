@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 <?php else:?>
-                    <li id="link-login"><a href="login.php">Login</a></li>
+                   <a id="link-login" href="<?=$base?>login.php">Login</a>
                 <?php endif?>
             </div>
 

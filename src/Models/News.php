@@ -48,23 +48,31 @@ class News{
 
         $year = $interval->y;
         $month = $interval->m;
+        $day = $interval->d;
         $hour = $interval->h;
         $minute = $interval->i;
         $second = $interval->s;
 
         if($year){
-            if($year > 1){
+            if($year >= 1){
                 return $year . " anos";
             }else{
                 return $year . " ano";
             }
         }elseif($month){
-            if($month > 1){
+            if($month >= 1){
                 return $month . " mêses";
             }else{
                 return $month . " mês";
             }
-        }elseif($hour){
+        }elseif($day){
+            if($day <= 1){
+                return $day . " dia";
+            }else{
+                return $day . " dias";
+            }
+        }
+        elseif($hour){
             return $hour . " h";
         }elseif($minute){
             return $minute . " min";

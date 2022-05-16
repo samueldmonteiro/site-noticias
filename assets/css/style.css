@@ -64,7 +64,10 @@ html{
     padding-bottom: 0px;
 }
 
-
+#link-login{
+    color: white;
+    text-decoration: none;
+}
 .header-bottom nav ul.container li{
     display: inline-block;
     margin-right: 10px;
@@ -121,12 +124,10 @@ html{
 .search-by-news input{
     border: none;
     padding: 5px 25px;
-}
-
-.search-by-news input:focus{
     border-bottom: 1px solid var(--color-2);
 
 }
+
 
 .search-by-news button{
     position: relative;
@@ -172,7 +173,7 @@ html{
 
 
 
-.news-preview-home-head .image-user, .news-item-head .image-user, header .image-user{
+.news-preview-home-head .image-user, .news-item-head .image-user, header .image-user, .news-comments .image-user{
     width: 40px;
     border-radius: 50%;
 }
@@ -425,6 +426,8 @@ html{
 }
 
 
+
+
 .form-login-body .links, .form-register-body .links{
     display: flex;
     justify-content: space-between;
@@ -513,4 +516,84 @@ footer a{
 blockquote{
     border-left: 4px solid gray;
     padding: 8px;
+}
+
+.news-comments{
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.news-comments .title{
+    padding: 18px 0px;
+    border-bottom: 1px solid #4444;
+    width: 100%;
+    display: block;
+    margin-bottom: 35px;
+}
+
+.news-comment-create{
+    margin-bottom: 30px;
+}
+
+.news-comment-create, .news-comment-item{
+    display: flex;
+}
+.news-comments img{
+    height: 40px;
+    margin-right: 10px;
+}
+
+.news-comment-create .news-comment-create-content{
+    border: 1px solid gray;
+    width: 100%;
+    padding: 10px;
+}
+
+.news-comment-create textarea{
+    width: 100%;
+    height: auto;
+    resize: none;
+    outline: none;
+    height: 60px;
+    border: none;
+}
+
+.news-comment-create-controls{
+    text-align: right;
+}
+
+
+.news-comment-item{
+    margin-bottom: 30px;
+    color: #444444;
+}
+
+.news-comment-item .username{
+    font-size: 13px;
+    color: #444444;
+    padding: 10px;
+}
+
+.news-comment-item .post-date{
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.news-comment-item-body{
+    font-size: 15px;
+    line-height: 1.7em;
+}
+
+#post-comment{
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.news-comments #more-comments{
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border-top: 1px solid #4444;
 }

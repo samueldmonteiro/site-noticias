@@ -32,7 +32,7 @@
 
         <div class="news-preview-home-footer">
             <div>
-                <span class="views-info">300 visualizações</span>
+                <span class="views-info"><?=$newsItemPreviewHome->countComments?> visualizações</span>
                 <span class="comments-info">3 comentários</span>
             </div>
             <div class="likes-info" id="news-like">

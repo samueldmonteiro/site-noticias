@@ -39,12 +39,20 @@
     .header-bottom div.container{
         display: none;
     }
+
+    .news-mini-preview{
+        max-width: 180px !important;
+    }
+
+    .news-mini-preview-title{
+        font-size: 13px;
+    }
 }
 
 
 @media (max-width:770px){
-    .news-mini-preview{
-        margin-right: 0px;
+    .container-news-mini-preview .items{
+        justify-content: center;
     }
 }
 

@@ -5,7 +5,7 @@
         CKEDITOR.replace( 'editor1' );
 </script>
 
-<div class="news-item" data-id="<?=$newsItem->id?>">
+<div class="news-item-action news-item" data-id="<?=$newsItem->id?>">
     <div class="news-item-head">
         <div class="info-from-news">
             <img src="<?=$base?>media/users/<?=$newsItem->user->image?>" alt="" class="image-user me-2">
@@ -42,11 +42,15 @@
         <div class="news-item-footer">
             <div>
                 <span class="views-info">300 visualizações</span>
-                <span class="comments-info">3 comentários</span>
+                <span class="comments-info"><?=$newsItem->countComments?> comentários</span>
             </div>
-            <div class="likes-info">
+            <div class="likes-info" id="news-like">
                 <span id="num-likes"><?=$newsItem->countLikes?></span>
-                <i class="bi bi-heart"></i>
+                <?php if($newsItem->isLiked):?>
+                    <i class="bi bi-heart-fill"></i>
+                <?php else:?>
+                    <i class="bi bi-heart"></i>
+                <?php endif?>
             </div>
         </div>
     </div>

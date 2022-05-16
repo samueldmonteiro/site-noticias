@@ -6,6 +6,7 @@ use Src\Models\News;
 use Src\Dao\UserDaoMysql;
 use Src\Dao\NewsLikeDaoMysql;
 use Src\Models\Auth;
+use Src\Dao\NewsCommentDaoMysql;
 
 class NewsDaoMysql{
 
@@ -30,13 +31,14 @@ class NewsDaoMysql{
 
             $userDao = new UserDaoMysql($this->pdo);
             $newsLikeDao = new NewsLikeDaoMysql($this->pdo);
+            $newsCommentsDao = new NewsCommentDaoMysql($this->pdo);
             $auth = new Auth($this->pdo, false);
 
             $currentUserInfo = $auth->checkAuthentication(false);
 
             $news->user = $userDao->findById($news->id_user);
-
             $news->countLikes = $newsLikeDao->getLikesFromNews($news->id);
+            $news->countComments = count($newsCommentsDao->getCommentsByNews($news->id));
             
             if($currentUserInfo){
                 $news->isLiked = $newsLikeDao->likeExists($currentUserInfo->id, $news->id);

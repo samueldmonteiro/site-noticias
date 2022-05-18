@@ -7,17 +7,21 @@ use Src\Dao\NewsDaoMysql;
 use Src\Models\Auth;
 use Src\Utils\Filter;
 use Src\Utils\Redirect;
+use Src\Dao\NewsViewDaoMysql;
 
-$auth = new Auth($pdo, $base);
-$newsDao = new NewsDaoMysql($pdo);
-
-$userInfo = $auth->checkAuthentication(false);
 
 if(!isset($_GET['news_id'])){
     Redirect::local("index.php");
 }
-
 $newsId = Filter::id($_GET['news_id']);
+
+$auth = new Auth($pdo, $base);
+$newsDao = new NewsDaoMysql($pdo);
+$newsViewDao = new NewsViewDaoMysql($pdo, $newsId);
+
+$userInfo = $auth->checkAuthentication(false);
+$newsViewDao->checkView($newsId);
+
 $newsItem = $newsDao->findById($newsId);
 
 $newsInfo = $newsDao->getNewsFromHome(1, 4);
@@ -96,7 +100,6 @@ require_once("partials/header.php");
             </div>
     </div>
 </div>
-
 
 
 <?php require_once("partials/footer.php")?>

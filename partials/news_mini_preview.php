@@ -9,7 +9,7 @@
         </div>
         <div class="news-mini-preview-footer">
             <div>
-                <span class="views-info"><i class="bi bi-eye"></i> 100</span>
+                <span class="views-info"><i class="bi bi-eye"></i> <?=$newsMiniPreview->views?></span>
                 <span class="comments-info"><i class="bi bi-chat-left-dots"></i> <?=$newsMiniPreview->countComments?></span>
             </div>
             <div class="likes-info">

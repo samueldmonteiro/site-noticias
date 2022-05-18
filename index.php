@@ -20,8 +20,14 @@ if(isset($_GET['page'])){
 }
 
 if(isset($_GET['search_news']) && !empty($_GET['search_news'])){
+
     $querySearch = Filter::input($_GET['search_news']);
     $newsInfo = $newsDao->newsSearch($querySearch, $page, $perPage);
+
+}elseif(isset($_GET['category'])){
+
+    $categoryId = Filter::id($_GET['category']);
+    $newsInfo = $newsDao->getNewsByCategory($categoryId, $page, $perPage);
 
 }else{
     $newsInfo = $newsDao->getNewsFromHome($page, $perPage);
@@ -32,6 +38,9 @@ $newsList = $newsInfo['newsList'];
 $paginationLinkbase = $base . "?page=";
 if(isset($querySearch)){
     $paginationLinkbase = $base . "?search_news=$querySearch&page=";
+}elseif(isset($categoryId)){
+    $paginationLinkbase = $base . "?category=$categoryId&page=";
+
 }
 
 require_once("partials/header.php");
@@ -43,7 +52,7 @@ require_once("partials/header.php");
     <div class="container-news-home">
 
         <?php if(!$newsList):?>
-            <?php if($querySearch):?>
+            <?php if(isset($querySearch)):?>
                 <h3 class="text-center mt-4">Nenhum Resultado Para: <?=$querySearch?></h3>
             <?php else:?>
                 <h3 class="text-center mt-4">Nenhuma Notícia Publicada</h3>

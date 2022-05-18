@@ -41,7 +41,7 @@
 
         <div class="news-item-footer">
             <div>
-                <span class="views-info">300 visualizações</span>
+                <span class="views-info"><?=$newsItem->views?> visualizações</span>
                 <span class="comments-info"><?=$newsItem->countComments?> comentários</span>
             </div>
             <div class="likes-info" id="news-like">
@@ -56,4 +56,3 @@
     </div>
 </div>
 
-<script src="<?=$base?>assets/js/newsBody.js"></script>

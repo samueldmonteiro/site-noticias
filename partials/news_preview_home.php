@@ -18,8 +18,10 @@
                 </p>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="#"><i class="bi bi-send"></i> Compartilhar</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-pen"></i> Editar</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash3"></i> Deletar</a></li>
+                    <?php if($auth->isAdmin($userInfo)):?>
+                        <li><a class="dropdown-item" href="<?=$base?>news_update.php?news_id=<?=$newsItemPreviewHome->id?>"><i class="bi bi-pen"></i> Editar</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-trash3"></i> Deletar</a></li>
+                    <?php endif?>
                 </ul>
             </div>
         </div>
@@ -32,7 +34,7 @@
 
         <div class="news-preview-home-footer">
             <div>
-                <span class="views-info">10 visualizações</span>
+                <span class="views-info"><?=$newsItemPreviewHome->views?> visualizações</span>
                 <span class="comments-info"><?=$newsItemPreviewHome->countComments?> comentários</span>
             </div>
             <div class="likes-info" id="news-like">

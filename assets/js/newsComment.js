@@ -97,4 +97,6 @@ let insertComment = {
    
 }
 
-insertComment.dumpComments();
+if(document.querySelector(".news-comments")){
+    insertComment.dumpComments();
+}

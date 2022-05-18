@@ -85,4 +85,10 @@ class Auth{
             return false;
         }
     }
+
+    public function onlyAdmin($userInfo){
+        if(!$this->isAdmin($userInfo)){
+            Redirect::local("index.php");
+        }
+    }
 }   

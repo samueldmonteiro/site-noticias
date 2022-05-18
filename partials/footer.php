@@ -11,5 +11,10 @@
     <script src="<?=$base?>assets/js/create_news.js"></script>
     <script src="<?=$base?>assets/js/newsLike.js"></script>
     <script src="<?=$base?>assets/js/newsComment.js"></script>
+    <script src="<?=$base?>assets/js/newsBody.js"></script>
+    <script src="<?=$base?>assets/js/newsUpdate.js"></script>
+
+
+
 </body>
 </html>

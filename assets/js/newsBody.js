@@ -1,7 +1,4 @@
-window.onload = function(){
-
-    function getNewsBody(){
-
+    function getNewsBody(insert){
         let newsId = document.querySelector(".news-item").dataset.id;
     
         form = new FormData();
@@ -13,10 +10,10 @@ window.onload = function(){
         })
         .then(res=>res.json())
         .then(json=>{
-            insertNewsBody(json)
+            insert(json)
         })
     } 
-     
+
     function insertNewsBody(data){
         let newsBody = document.querySelector(".news-item-content");
     
@@ -28,5 +25,8 @@ window.onload = function(){
             },1000)
         }
     }
-    getNewsBody();
-}
+
+    if(document.querySelector(".news-item-content")){
+        getNewsBody(insertNewsBody)
+    }
+

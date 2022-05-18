@@ -1,5 +1,10 @@
 <?php
 
+use Src\Dao\NewsCategoryDaoMysql;
+
+$newsCategoryDao = new NewsCategoryDaoMysql($pdo);
+
+$categoriesList = $newsCategoryDao->getAll();
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +42,12 @@
                             Categorias
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Esporte</a></li>
-                            <li><a class="dropdown-item" href="#">Saúde</a></li>
-                            <li><a class="dropdown-item" href="#">Tecnologia</a></li>
+                                <?php foreach ($categoriesList as $category): ?>
+                                    <li><a class="dropdown-item" href="<?=$base?>?category=<?=$category->id?>">
+                                        <?=$category->name?>
+                                    </a></li> 
+                                <?php endforeach ?>
+                            
                             </ul>
                         </div></li>
                         

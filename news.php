@@ -20,7 +20,8 @@ if(!isset($_GET['news_id'])){
 $newsId = Filter::id($_GET['news_id']);
 $newsItem = $newsDao->findById($newsId);
 
-$newsList = $newsDao->getAllNews();
+$newsInfo = $newsDao->getNewsFromHome(1, 4);
+$newsList = $newsInfo['newsList'];
 
 if(!$newsItem){
     die("<h3>Notícia não Encontrada...</h3>"); 

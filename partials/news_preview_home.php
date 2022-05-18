@@ -32,8 +32,8 @@
 
         <div class="news-preview-home-footer">
             <div>
-                <span class="views-info"><?=$newsItemPreviewHome->countComments?> visualizações</span>
-                <span class="comments-info">3 comentários</span>
+                <span class="views-info">10 visualizações</span>
+                <span class="comments-info"><?=$newsItemPreviewHome->countComments?> comentários</span>
             </div>
             <div class="likes-info" id="news-like">
                 <span id="num-likes"><?=$newsItemPreviewHome->countLikes?></span>

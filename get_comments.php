@@ -29,5 +29,4 @@ if(isset($_POST['news-id']) && isset($_POST['limit'])){
     }
 
     Message::returnByAjax("success", "", $commentsByNews);
-
 }

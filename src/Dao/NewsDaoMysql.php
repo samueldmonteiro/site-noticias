@@ -68,6 +68,21 @@ class NewsDaoMysql{
         $stmt->execute();
     }
 
+    public function update(News $news){
+        $stmt = $this->pdo->prepare("UPDATE news SET 
+        id_user=:id_user, id_category=:id_category, created_at=:created_at, title=:title, subject=:subject, body=:body, cover=:cover WHERE id=:id");
+
+
+        $stmt->bindValue(":id_user", $news->id_user);
+        $stmt->bindValue(":id_category", $news->id_category);
+        $stmt->bindValue(":created_at", $news->created_at);
+        $stmt->bindValue(":title", $news->title);
+        $stmt->bindValue(":subject", $news->subject);
+        $stmt->bindValue(":body", $news->body);
+        $stmt->bindValue(":cover", $news->cover);
+        $stmt->bindValue(":id", $news->id);
+        $stmt->execute();
+    }
 
     public function getNewsFromHome($page=1, $perPage){
         

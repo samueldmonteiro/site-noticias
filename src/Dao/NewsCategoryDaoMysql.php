@@ -48,4 +48,19 @@ class NewsCategoryDaoMysql{
 
         return false;
     }
+
+
+    public function findById($id){
+        $stmt = $this->pdo->prepare("SELECT * FROM news_categories WHERE id=:id");
+        $stmt->bindValue(":id",$id);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+            $newsCategory = $this->buildNewsCategory($data);
+            return $newsCategory;
+        }
+
+        return false;
+    }
 }

@@ -2,7 +2,12 @@
 
 $host = "localhost";
 $dbName = "news";
-$user = "samsepiol";
-$password = "t00r";
+$user = "qwerty";
+$password = "t00rt00r";
 
-$pdo = new PDO("mysql:host=$host;dbname=$dbName",$user, $password);
+
+try{
+    $pdo = new PDO("mysql:host=$host;dbname=$dbName",$user, $password);  
+}catch(PDOException $e){
+    echo $e->getMessage();
+}

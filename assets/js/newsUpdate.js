@@ -1,5 +1,3 @@
-
-
 if(document.querySelector(".update-news")){
     getNewsBody(insertBodyToUpdate)
 }

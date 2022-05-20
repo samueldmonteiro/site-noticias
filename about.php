@@ -1,4 +1,13 @@
-<?php 
+<?php
+
+use Src\Models\Auth;
+
+require_once("vendor/autoload.php");
+require_once("config/globals.php");
+
+$auth = new Auth($pdo, $base);
+
+$userInfo = $auth->checkAuthentication(false);
 
 require_once("partials/header.php");
 ?>

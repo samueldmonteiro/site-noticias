@@ -1,6 +1,6 @@
     <footer>
         <div class="footer-info">
-            <p>Criado por Samuel Davi &copy</p>
+            <a href="mailto:samuel.davimt@gmail.com">Criado por Samuel Davi &copy</a>
             <!-- <a href="emailto:samuel.davimt@gmail.com">samuel.davimt@gmail.com</a> -->
         </div>
     </footer>
@@ -13,6 +13,7 @@
     <script src="<?=$base?>assets/js/newsComment.js"></script>
     <script src="<?=$base?>assets/js/newsBody.js"></script>
     <script src="<?=$base?>assets/js/newsUpdate.js"></script>
+    <script src="<?=$base?>assets/js/newsDelete.js"></script>
 
 
 

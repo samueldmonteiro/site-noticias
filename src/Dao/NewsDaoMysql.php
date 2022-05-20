@@ -193,4 +193,10 @@ class NewsDaoMysql{
             return false;
         }
     }
+
+    public function delete($id){
+        $stmt = $this->pdo->prepare("DELETE FROM news WHERE id=:id");
+        $stmt->bindValue(":id",$id);
+        $stmt->execute();
+    }
 }

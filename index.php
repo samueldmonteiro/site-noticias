@@ -7,7 +7,7 @@ require_once("config/globals.php");
 use Src\Dao\NewsDaoMysql;
 use Src\Models\Auth;
 use Src\Utils\Filter;
-use Src\Utils\Redirect;
+use Src\Utils\Message;
 
 $auth = new Auth($pdo, $base);
 $newsDao = new NewsDaoMysql($pdo);
@@ -52,6 +52,12 @@ require_once("partials/header.php");
 
     <div class="container-news-home">
 
+        <?php if(Message::getMessageInSession()):?>
+            <div class="alert <?=Message::getMessageInSession()['style']?> text-center" role="alert">
+                <?=Message::getMessageInSession()['msg']?>
+                <?=Message::destroyMessageInSession()?>
+            </div>
+        <?php endif?>
         <?php if(!$newsList):?>
             <?php if(isset($querySearch)):?>
                 <h3 class="text-center mt-4">Nenhum Resultado Para: <?=$querySearch?></h3>

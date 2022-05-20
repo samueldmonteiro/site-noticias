@@ -21,8 +21,14 @@
             </p>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="#"><i class="bi bi-send"></i> Compartilhar</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-pen"></i> Editar</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-trash3"></i> Deletar</a></li>
+                <?php if($userInfo && $auth->isAdmin($userInfo)):?>
+                    <li><a class="dropdown-item" href="<?=$base?>news_update.php?news_id=<?=$newsItem->id?>"><i class="bi bi-pen"></i> Editar</a></li>
+                    <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#news-delete-modal" type="button" id="show-news-delete-modal">
+                        <i class="bi bi-trash3"></i> Deletar
+                    </li>
+                <?php endif?>
+                
+</button>
             </ul>
         </div>
     </div>

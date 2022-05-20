@@ -64,4 +64,10 @@ class NewsCommentDaoMysql{
         }
         return $commentsList;
     }
+
+    public function deleteCommentsFromNews($newsId){
+        $stmt = $this->pdo->prepare("DELETE FROM news_comments WHERE id_news=:id_news");
+        $stmt->bindValue(":id_news",$newsId);
+        $stmt->execute();
+    }
 }

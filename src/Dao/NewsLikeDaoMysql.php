@@ -78,4 +78,10 @@ class NewsLikeDaoMysql{
             $this->insert($newsLike);
         }
     }
+
+    public function deleteLikesFromNews($newsId){
+        $stmt = $this->pdo->prepare("DELETE FROM news_likes WHERE id_news=:id_news");
+        $stmt->bindValue(":id_news",$newsId);
+        $stmt->execute();
+    }
 }

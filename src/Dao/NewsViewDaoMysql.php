@@ -62,4 +62,9 @@ class NewsViewDaoMysql{
     }
 
 
+    public function deleteViewsFromNews($newsId){
+        $stmt = $this->pdo->prepare("DELETE FROM news_views WHERE id_page=:id_page");
+        $stmt->bindValue(":id_page",$newsId, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

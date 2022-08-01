@@ -3,7 +3,6 @@
 require_once("vendor/autoload.php");
 require_once("config/globals.php");
 
-
 use Src\Dao\NewsDaoMysql;
 use Src\Models\Auth;
 use Src\Utils\Filter;

@@ -150,6 +150,7 @@ html{
 .news-preview-home img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .news-preview-home-image, .news-preview-home-content{

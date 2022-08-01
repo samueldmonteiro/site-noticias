@@ -1,7 +1,7 @@
 <?php
 
 require_once("vendor/autoload.php");
-require_once("config/globals.php");
+require_once __DIR__ . "/config/globals.php";
 
 use Src\Utils\Filter;
 use Src\Models\Auth;
